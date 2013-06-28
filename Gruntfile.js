@@ -1,0 +1,75 @@
+/**
+ * grunt-listfiles
+ * https://github.com/psyrendust/grunt-listfiles
+ *
+ * Copyright (c) 2013 Larry Gordon
+ * Licensed under the MIT License
+ */
+
+module.exports = function (grunt) {
+  'use strict';
+  // load all grunt tasks
+  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+
+  grunt.initConfig({
+    jshint: {
+      options: {
+        jshintrc: '.jshintrc'
+      },
+      all: [
+        'Gruntfile.js',
+        'tasks/*.js',
+        '<%= nodeunit.tests %>'
+      ]
+    },
+    clean: {
+      test: ['tmp']
+    },
+    // Configuration to be run (and then tested).
+    listfiles: {
+      options: {
+        banner: '/**\n' +
+                ' * list files banner\n' +
+                ' */\n' +
+                '{\n' +
+                '\t[',
+        footer: '\t]\n' +
+                '}',
+        eol: 'crlf',
+        prefix: '\t\t\'',
+        postfix: '\',',
+        postfixLastLine: '\''
+      },
+      test1: {
+        files: {
+          'tmp/output.txt': [
+            'test/fixtures/**/*.*',
+            '!test/fixtures/{,*/,**/}*.{scss,html,md,rb}',
+            '!test/fixtures/{,*/,**/}LICENSE'
+          ]
+        }
+      }
+    },
+
+    // Unit tests.
+    nodeunit: {
+      tests: ['test/*_test.js']
+    }
+
+  });
+  // Load this plugin's task(s).
+  grunt.loadTasks('tasks');
+
+  // searchText.replace(/(:dont_touch =>\[\n)([\s\S]*?)(\t+?\])/gi, "$1$3")
+
+  // Whenever the 'test' task is run, first clean the 'tmp' dir, then run this
+  // plugin's task(s), then test the result.
+  grunt.registerTask('test', ['clean', 'listfiles', 'nodeunit', 'clean']);
+
+  // For development
+  grunt.registerTask('dev', ['clean', 'listfiles']);
+
+  // By default, lint and run all tests.
+  grunt.registerTask('default', ['jshint', 'test']);
+
+};
