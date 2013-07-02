@@ -17,11 +17,14 @@ module.exports = function (grunt) {
     else if (eol === 'crlf') {
       linefeed = '\r\n';
     }
-    return file.replace(/\r\n|\n|\r/g, linefeed);
+    return file.replace(/\r\n|\n|\r/gi, linefeed);
   }
 
   // Create a list of files and perform an action on each file in the list then write the results to a file
   grunt.registerMultiTask('listfiles', 'Create a list of files and perform an action on each file in the list then write the results to a file', function () {
+    // Tell Grunt this task is asynchronous.
+    var done = this.async();
+    var list = [];
     var options = this.options({
       banner: '',
       footer: '',
@@ -29,8 +32,7 @@ module.exports = function (grunt) {
       prefix: '\'',
       postfix: '\'',
       postfixLastLine: '\''
-    }),
-    list = [];
+    });
 
     grunt.verbose.writeflags(options, 'Options');
 
@@ -61,11 +63,14 @@ module.exports = function (grunt) {
       if (options.footer.length > 0) {
         src.push('\n' + options.footer);
       }
-      output = lineEnding(src.join(''), '\n');
+      output = lineEnding(src.join(''), options.eol);
       grunt.file.write(f.dest, output);
       grunt.log.ok(l + ' file' + (l === 1 ? '' : 's') + ' processed.');
       grunt.log.ok('Created file ' + f.dest);
     });
+
+    // Tell grunt the async task is complete
+    done();
   });
 
 };
