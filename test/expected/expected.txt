@@ -9,6 +9,7 @@
 		'test/fixtures/file4.js',
 		'test/fixtures/file5.js',
 		'test/fixtures/file6.js',
+		'test/fixtures/file7.js',
 		'test/fixtures/inner/inner_file1.css',
 		'test/fixtures/inner/inner_file2.js'
 	]

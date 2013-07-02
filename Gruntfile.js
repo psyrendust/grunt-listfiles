@@ -35,7 +35,7 @@ module.exports = function (grunt) {
                 '\t[',
         footer: '\t]\n' +
                 '}',
-        eol: 'crlf',
+        eol: 'lf',
         prefix: '\t\t\'',
         postfix: '\',',
         postfixLastLine: '\''
@@ -61,7 +61,7 @@ module.exports = function (grunt) {
         createTag: true,
         tagName: 'v%VERSION%',
         tagMessage: 'Version %VERSION%',
-        push: true,
+        push: false,
         pushTo: 'origin'
       }
     },
