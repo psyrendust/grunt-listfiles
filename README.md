@@ -1,4 +1,4 @@
-# grunt-listfiles [![Build Status](https://travis-ci.org/psyrendust/grunt-listfiles.png?branch=master)](https://travis-ci.org/psyrendust/grunt-listfiles)
+# grunt-listfiles [![NPM version](https://badge.fury.io/js/grunt-listfiles.png)](http://badge.fury.io/js/grunt-listfiles) [![Build Status](https://travis-ci.org/psyrendust/grunt-listfiles.png?branch=master)](https://travis-ci.org/psyrendust/grunt-listfiles)
 
 > Create a list of files and perform an action on each file in the list then write the results to a file.
 
