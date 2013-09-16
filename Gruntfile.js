@@ -38,7 +38,16 @@ module.exports = function (grunt) {
         eol: 'lf',
         prefix: '\t\t\'',
         postfix: '\',',
-        postfixLastLine: '\''
+        postfixLastLine: '\'',
+        replacements: [{
+          pattern: /\.min/gi,
+          replacement: ''
+        }, {
+          pattern: /(file)(_)([\S]*?)(_)(test)/gi,
+          replacement: function (match, p1, p2, p3, p4, p5, offset, string) {
+            return [p1, p3, p5].join('-');
+          }
+        }]
       },
       test1: {
         files: {

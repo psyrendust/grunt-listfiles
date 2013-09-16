@@ -29,41 +29,73 @@ Task targets, files and options may be specified according to the grunt [Configu
 ### Options
 
 #### banner
-Type: `String`
+Type: `String`  
 Default: `null`
 
 Prefix the destination file with the given banner, with a linebreak inbetween.
 
 #### footer
-Type: `String`
+Type: `String`  
 Default: `null`
 
 Postfix the destination file with the given footer, with a prepended linebreak.
 
 #### eol
-Type: `String`
-Choices: `'lf'`, `'cr'`, `'crlf'`
+Type: `String`  
+Choices: `'lf'`, `'cr'`, `'crlf'`  
 Default: `'lf'`
 
 The linefeed character you would like to use for the destination file.
 
 #### prefix
-Type: `String`
+Type: `String`  
 Default: `null`
 
 A prefix string to prepend to each file that is found.
 
 #### postfix
-Type: `String`
+Type: `String`  
 Default: `null`
 
 A postfix string to append to each file that is found.
 
 #### postfixLastLine
-Type: `String`
+Type: `String`  
 Default: `null`
 
 A postfix string to append to the last file that is found.
+
+
+#### replacements
+Type: `Array`  
+Default: `[]`
+
+This option will hold all your pattern/replacement pairs. A pattern/replacement pair should contain key:value pairs containing:
+
+* pattern `String` or `Regex`
+* replacement `String` or `Function`
+
+```javascript
+options: {
+  replacements: [{
+    pattern: /\/(asdf|qwer)\//ig,
+    replacement: '"$1"'
+  }, {
+    pattern: ',',
+    replacement: ';'
+  }, {
+    pattern: /(file)(_)([\S]*?)(_)(test)/gi,
+    replacement: function (match, p1, p2, p3, p4, p5, offset, string) {
+      return [p1, p3, p5].join('-');
+    }
+  }]
+}
+```
+
+###### Note
+
+If specifying a function as a parameter for the replacemnt please see the documentation at [https://developer.mozilla.org](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) for more details.
+If the pattern is a string, only the first occurrence will be replaced, as stated on [String.prototype.replace](http://www.ecma-international.org/ecma-262/5.1/#sec-15.5.4.11).
 
 ### Usage Examples
 
@@ -107,6 +139,7 @@ grunt.registerTask('default', ['listfiles']);
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+ * 2013-09-16   v0.1.4   Added regular expression replacemnt option.
  * 2013-07-02   v0.1.3   Added Version Badge.
  * 2013-07-02   v0.1.2   Fixed broken Travis test.
  * 2013-07-02   v0.1.1   Added async done(). Added grunt-bump. Fixed line ending bug.

@@ -42,6 +42,8 @@
     "gruntplugin",
     "eol",
     "listfiles",
-    "process"
+    "process",
+    "regex",
+    "replace"
   ]
 }

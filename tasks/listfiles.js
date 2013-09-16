@@ -31,10 +31,18 @@ module.exports = function (grunt) {
       eol: 'lf',
       prefix: '\'',
       postfix: '\'',
-      postfixLastLine: '\''
+      postfixLastLine: '\'',
+      replacements: []
     });
 
     grunt.verbose.writeflags(options, 'Options');
+
+    // Normalize the replacment patterns
+    if (options.replacements.length > 0) {
+      options.replacements = options.replacements.map(function (replacement) {
+        return [replacement.pattern, replacement.replacement];
+      });
+    }
 
     // Iterate over all specified file groups.
     this.files.forEach(function(f) {
@@ -50,13 +58,20 @@ module.exports = function (grunt) {
       });
 
       // Add prefix and postfix to each line
-      var i,
-          l = src.length,
-          last = l-1,
+      var totalFiles = src.length,
+          last = totalFiles - 1,
           output = '';
-      for (i=0; i<l; i++) {
-        src[i] = options.prefix + src[i] + ((i === last) ? options.postfixLastLine : options.postfix + '\n');
+      // Perform replacements
+      if (options.replacements.length > 0) {
+        src = src.map(function (filePath) {
+          return options.replacements.reduce(function (filePath, replacement) {
+            return filePath.replace(replacement[0], replacement[1]);
+          }, filePath);
+        });
       }
+      src = src.map(function (file, i) {
+        return options.prefix + file + ((i === last) ? options.postfixLastLine : options.postfix + '\n');
+      });
       if (options.banner.length > 0) {
         src.unshift(options.banner + '\n');
       }
@@ -65,7 +80,7 @@ module.exports = function (grunt) {
       }
       output = lineEnding(src.join(''), options.eol);
       grunt.file.write(f.dest, output);
-      grunt.log.ok(l + ' file' + (l === 1 ? '' : 's') + ' processed.');
+      grunt.log.ok(totalFiles + ' file' + (totalFiles === 1 ? '' : 's') + ' processed.');
       grunt.log.ok('Created file ' + f.dest);
     });
 
