@@ -1,7 +1,7 @@
 {
   "name": "grunt-listfiles",
   "description": "Create a list of files and perform an action on each file in the list then write the results to a file.",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "homepage": "https://github.com/psyrendust/grunt-listfiles",
   "author": {
     "name": "Larry Gordon",
