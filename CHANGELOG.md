@@ -1,3 +1,19 @@
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/psyrendust/grunt-listfiles/compare/v0.1.4...v0.2.0) (2016-09-08)
+
+
+### Bug Fixes
+
+* **.travis.yml:** the command "npm install " failed and exited with 1 during ([722ed45](https://github.com/psyrendust/grunt-listfiles/commit/722ed45))
+
+
+### Features
+
+* **package.json:** add `githubrelease` and npm scripts for releases ([cd63b22](https://github.com/psyrendust/grunt-listfiles/commit/cd63b22))
+* **package.json:** update `peerDependencies` to support Grunt 1.0 ([3105597](https://github.com/psyrendust/grunt-listfiles/commit/3105597)), closes [#4](https://github.com/psyrendust/grunt-listfiles/issues/4)
+
+
+
 <a name="0.1.4"></a>
 ## [0.1.4](https://github.com/psyrendust/grunt-listfiles/compare/v0.1.4...v0.1.3) (2013-09-16)
 
