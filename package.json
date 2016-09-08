@@ -25,15 +25,15 @@
     "node": ">= 0.8.x"
   },
   "scripts": {
+    "postinstall": "cp node_modules/angular-precommit/index.js .git/hooks/commit-msg",
     "test": "grunt test"
   },
   "devDependencies": {
-    "grunt-contrib-jshint": "~0.6.0",
-    "grunt-contrib-clean": "~0.4.1",
-    "grunt-contrib-nodeunit": "~0.2.0",
-    "matchdep": "~0.1.2",
+    "angular-precommit": "^1.0.3",
     "grunt": "~0.4.1",
-    "grunt-bump": "0.0.7"
+    "grunt-contrib-clean": "~0.4.1",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-nodeunit": "~0.2.0"
   },
   "peerDependencies": {
     "grunt": ">=0.4.0"
