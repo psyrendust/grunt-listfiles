@@ -139,8 +139,4 @@ grunt.registerTask('default', ['listfiles']);
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
- * 2013-09-16   v0.1.4   Added regular expression replacemnt option.
- * 2013-07-02   v0.1.3   Added Version Badge.
- * 2013-07-02   v0.1.2   Fixed broken Travis test.
- * 2013-07-02   v0.1.1   Added async done(). Added grunt-bump. Fixed line ending bug.
- * 2013-06-28   v0.1.0   Initial release.
+See [CHANGELOG.md](https://github.com/psyrendust/grunt-listfiles/blob/master/CHANGELOG.md).
