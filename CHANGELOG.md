@@ -1,3 +1,27 @@
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/psyrendust/grunt-listfiles/compare/v0.2.0...v1.0.0) (2016-09-08)
+
+
+### Bug Fixes
+
+* **expected.txt:** fix sort order of file list ([c4cfa84](https://github.com/psyrendust/grunt-listfiles/commit/c4cfa84))
+* **listfiles.js:** alpha sort files after replacements have occurred to normalize results ([594a06d](https://github.com/psyrendust/grunt-listfiles/commit/594a06d))
+
+
+### Chores
+
+* **package.json:** match node support for `grunt-cli@1.x.x` ([95e73a2](https://github.com/psyrendust/grunt-listfiles/commit/95e73a2))
+
+
+### BREAKING CHANGES
+
+* package.json: match node support for `grunt-cli@1.x.x`
+
+This project now only supports node `v0.10.0` or greater. Please use [v0.2.0](https://github.com/psyrendust/grunt-listfiles/releases/tag/v0.2.0)
+for backwards compatibility.
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/psyrendust/grunt-listfiles/compare/v0.1.4...v0.2.0) (2016-09-08)
 
