@@ -20,6 +20,26 @@ module.exports = function (grunt) {
     return file.replace(/\r\n|\n|\r/gi, linefeed);
   }
 
+  function aryMap(el, i) {
+    return {
+      index: i,
+      value: el.toLowerCase()
+    };
+  }
+
+  function arySort(a, b) {
+    return +(a.value > b.value) || +(a.value === b.value) - 1;
+  }
+
+  function alphaSort(filepaths) {
+    var aryResults = function aryResults(el) {
+      return filepaths[el.index];
+    };
+    var mapped = filepaths.map(aryMap);
+    mapped.sort(arySort);
+    return mapped.map(aryResults);
+  }
+
   // Create a list of files and perform an action on each file in the list then write the results to a file
   grunt.registerMultiTask('listfiles', 'Create a list of files and perform an action on each file in the list then write the results to a file', function () {
     // Tell Grunt this task is asynchronous.
@@ -72,6 +92,10 @@ module.exports = function (grunt) {
       src = src.map(function (file, i) {
         return options.prefix + file + ((i === last) ? options.postfixLastLine : options.postfix + '\n');
       });
+
+      // Sort the transformed results
+      src = alphaSort(src);
+
       if (options.banner.length > 0) {
         src.unshift(options.banner + '\n');
       }
