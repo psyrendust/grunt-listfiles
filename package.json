@@ -30,7 +30,7 @@
     "release:patch": "githubrelease -tb patch",
     "release:minor": "githubrelease -tb minor",
     "release:major": "githubrelease -tb major",
-    "test": "grunt test"
+    "test": "grunt"
   },
   "devDependencies": {
     "angular-precommit": "^1.0.3",
