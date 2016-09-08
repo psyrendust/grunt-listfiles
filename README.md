@@ -100,6 +100,10 @@ options: {
 If specifying a function as a parameter for the replacemnt please see the documentation at [https://developer.mozilla.org](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) for more details.
 If the pattern is a string, only the first occurrence will be replaced, as stated on [String.prototype.replace](http://www.ecma-international.org/ecma-262/5.1/#sec-15.5.4.11).
 
+###### Note
+
+All results will be alpha sorted after all replacements have occurred.
+
 ### Usage Examples
 
 #### Example Config
