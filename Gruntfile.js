@@ -8,9 +8,8 @@
 
 module.exports = function (grunt) {
   'use strict';
-  // load all grunt tasks
-  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
+  // Project configuration.
   grunt.initConfig({
     jshint: {
       options: {
@@ -22,9 +21,11 @@ module.exports = function (grunt) {
         '<%= nodeunit.tests %>'
       ]
     },
+
     clean: {
       test: ['tmp']
     },
+
     // Configuration to be run (and then tested).
     listfiles: {
       options: {
@@ -60,21 +61,6 @@ module.exports = function (grunt) {
       }
     },
 
-    bump: {
-      options: {
-        files: ['package.json'],
-        updateConfigs: [],
-        commit: true,
-        commitMessage: 'Release v%VERSION%',
-        commitFiles: ['-a'],
-        createTag: true,
-        tagName: 'v%VERSION%',
-        tagMessage: 'Version %VERSION%',
-        push: false,
-        pushTo: 'origin'
-      }
-    },
-
     // Unit tests.
     nodeunit: {
       tests: ['test/*_test.js']
@@ -84,7 +70,10 @@ module.exports = function (grunt) {
   // Load this plugin's task(s).
   grunt.loadTasks('tasks');
 
-  // searchText.replace(/(:dont_touch =>\[\n)([\s\S]*?)(\t+?\])/gi, "$1$3")
+  // These plugins provide necessary tasks.
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
   // Whenever the 'test' task is run, first clean the 'tmp' dir, then run this
   // plugin's task(s), then test the result.
