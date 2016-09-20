@@ -20,7 +20,7 @@
       "url": "https://github.com/psyrendust/grunt-listfiles/blob/master/LICENSE-MIT"
     }
   ],
-  "main": "Gruntfile.js",
+  "main": "tasks/listfiles.js",
   "engines": {
     "node": ">= 0.10.0",
     "npm": ">= 2.0.0"
