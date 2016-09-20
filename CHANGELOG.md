@@ -1,3 +1,13 @@
+<a name="1.0.1"></a>
+## [1.0.1](https://github.com/psyrendust/grunt-listfiles/compare/v1.0.0...v1.0.1) (2016-09-20)
+
+
+### Bug Fixes
+
+* **package.json:** run check-env.js to check if postinstall should occur ([7214b93](https://github.com/psyrendust/grunt-listfiles/commit/7214b93))
+
+
+
 <a name="1.0.0"></a>
 # [1.0.0](https://github.com/psyrendust/grunt-listfiles/compare/v0.2.0...v1.0.0) (2016-09-08)
 
